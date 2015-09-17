@@ -15,9 +15,10 @@
 			<li ng-repeat="date in dateArray">
 				<div class="day-entry" ng-click="showDetails($index)">{{dateArray[$index].date}}</div>
 				<div ng-show="dateArray[$index].showValue">
-					<label>What?</label><input class="input" value="What?"><br/>
-					<label>When?</label><input class="input" value="WHEN?"><br/>
-					<label>With Who?</label><input class="input" value="WITH WHO?!"><br/>
+					<label>What?</label><input class="input" value="What?" ng-model="what"><br/>
+					<label>When?</label><input class="input" value="WHEN?" ng-model="when"><br/>
+					<label>With Who?</label><input class="input" value="WITH WHO?!" ng-model="where"><br/>
+					<button ng-click="submitAppointment($index, what, when, where)">Submit Appointment</button>
 				</div>
 			</li>
 		</ul>
