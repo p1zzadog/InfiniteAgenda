@@ -13,8 +13,14 @@
 	<div class="agenda-container">
 		<ul ng-init="loadMore()">
 			<li ng-repeat="date in dateArray">
-				<div class="day-entry" ng-click="showDetails($index)">{{dateArray[$index].date}}</div>
-				<div ng-show="dateArray[$index].showValue">
+				<div class="day-entry" ng-click="showForm($index)">{{date.date}}<br/>
+					<ul>
+								<!-- date.appointment === array containing appointment objects -->
+								<!-- appointment in date.appointment refers to appointment object -->
+						<li ng-repeat="appointment in date.appointment">What: {{appointment.what}}<br/>When: {{appointment.when}}<br/>Where: {{appointment.where}}<br/></li>
+					</ul>
+				</div>
+				<div ng-show="date.showValue">
 					<label>What?</label><input class="input" value="What?" ng-model="what"><br/>
 					<label>When?</label><input class="input" value="WHEN?" ng-model="when"><br/>
 					<label>With Who?</label><input class="input" value="WITH WHO?!" ng-model="where"><br/>
@@ -24,7 +30,6 @@
 		</ul>
 		<button ng-click="loadMore()">Load More</button>
 	</div>
-
 	<script type="text/javascript" src="troller.js"></script>
 </body>
 </html>

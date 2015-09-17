@@ -23,7 +23,7 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 		populateDateArray(dateArrayIndex);
 	};
 
-	$scope.showDetails = function(index) {
+	$scope.showForm = function(index) {
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 	}
 
@@ -33,7 +33,7 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 			when  : when,
 			where : where,
 		});
-		console.log($scope.dateArray[index])
+		console.log($scope.dateArray)
 	}
 
 }]);
