@@ -9,6 +9,21 @@
 	<script type="text/javascript" src="angular.js"></script>
 </head>
 <body ng-controller="troller">
+	<Header class="site-header">Steve's Non-Nefarious Agenda</Header>
+	<div class="agenda-container">
+		<ul ng-init="loadMore()">
+			<li ng-repeat="date in dateArray">
+				<div class="day-entry" ng-click="showDetails($index)">{{dateArray[$index].date}}</div>
+				<div ng-show="dateArray[$index].showValue">
+					<label>What?</label><input class="input" value="What?"><br/>
+					<label>When?</label><input class="input" value="WHEN?"><br/>
+					<label>With Who?</label><input class="input" value="WITH WHO?!"><br/>
+				</div>
+			</li>
+		</ul>
+		<button ng-click="loadMore()">Load More</button>
+	</div>
+
 	<script type="text/javascript" src="troller.js"></script>
 </body>
 </html>
