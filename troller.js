@@ -1,8 +1,8 @@
 angular.module('infiniteApp', ['infinite-scroll']);
 
 angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
-	$scope.dateArray = [];
-	dateArrayIndex = 0;
+	$scope.dateArray = JSON.parse(localStorage.getItem('dateArrayJSON'));
+	dateArrayIndex = $scope.dateArray.length;
 	
 	var populateDateArray = function(indexSeed) {
 		index = indexSeed;
@@ -38,6 +38,8 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 		}
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 		// console.log($scope.dateArray)
+
+		localStorage.setItem('dateArrayJSON', JSON.stringify($scope.dateArray));
 	}
 
 	$scope.editAppointmentClick = function(outerIndex, innerIndex) {
@@ -47,6 +49,11 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 	$scope.submitAppointmentEdit = function(outerIndex, innerIndex) {
 		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = false;
 		console.log($scope.dateArray[outerIndex].appointment[innerIndex])
+		localStorage.setItem('dateArrayJSON', JSON.stringify($scope.dateArray));
+		console.log()
+		console.log(localStorage.getItem('dateArrayJSON'))
 	}
+
+
 
 }]);
