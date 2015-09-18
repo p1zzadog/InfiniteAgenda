@@ -14,7 +14,7 @@
 <body ng-controller="troller" ng-keypress = "keyPress($event)">
 	<Header class="site-header">Steve's Nefarious Agenda</Header>
 	<div class="agenda-container" infinite-scroll="loadMore()">
-		<ul >
+		<ul>
 			<li ng-repeat="(outerIndex, date) in dateArray">
 				<!-- setting scope variables to null here is the only way I could clear them. Doesn't work in JS file for some reason -->
 				<div ng-class-odd="'alternate-agenda'" class="day-entry">{{date.date}}<br/>
@@ -24,13 +24,13 @@
 						<li ng-repeat="(innerIndex, appointment) in date.appointment">
 							<hr>
 							<div ng-click="editAppointmentClick(outerIndex, innerIndex)">
-							<label>What: </label><p ng-show="!appointment.editKey">{{appointment.whatKey}}</p>
+							<label>What: </label><p ng-show="!appointment.editKey" ng-bind="appointment.whatKey"></p>
 							<input ng-show="appointment.editKey" ng-model="appointment.whatKey" value="{{appointment.whatKey}}"/>
 						
-							<label>When: </label><p ng-show="!appointment.editKey">{{appointment.whenKey}}</p>
+							<label>When: </label><p ng-show="!appointment.editKey" ng-bind="appointment.whenKey"></p>
 							<input ng-show="appointment.editKey" ng-model="appointment.whenKey" value="{{appointment.whenKey}}"/>
 							
-							<label>Who: </label><p ng-show="!appointment.editKey">{{appointment.whoKey}}</p>
+							<label>Who: </label><p ng-show="!appointment.editKey" ng-bind="appointment.whoKey"></p>
 							<input ng-show="appointment.editKey" ng-model="appointment.whoKey" value="{{appointment.whoKey}}"/>
 							</div>
 							<button ng-click="submitAppointmentEdit(outerIndex, innerIndex)" ng-show="appointment.editKey" class="button load-more-button">Submit Edits</button>

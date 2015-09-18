@@ -1,11 +1,32 @@
 angular.module('infiniteApp', ['infinite-scroll']);
 
 angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
-	$scope.dateArray = JSON.parse(localStorage.getItem('dateArrayJSON'));
-	dateArrayIndex = $scope.dateArray.length;
+	$scope.dateArray = [];
+	var todaysDate = new Date();
+	if (JSON.parse(localStorage.getItem('dateArrayJSON')) === null) {
+		var dateArrayIndex = 0;
+		var seedDate = new Date();
+	}
+	else {
+		$scope.dateArray = JSON.parse(localStorage.getItem('dateArrayJSON'));
+		// console.log(todaysDate.getDate());
+		// console.log(Date.parse($scope.dateArray[0].date)/());
+		// if (seedDate.getDate() > )
+		var dateArrayIndex = ($scope.dateArray.length);
+	}
 	
+	// console.log($scope.dateArray)
+	// if ($scope.dateArray = null) {
+	// 	$scope.dateArray = [];
+	// 	var dateArrayIndex=0;
+	// }
+	// else {
+	// 	$scope.dateArray = JSON.parse(localStorage.getItem('dateArrayJSON'));
+		// var dateArrayIndex = 0;
+	// };
+
 	var populateDateArray = function(indexSeed) {
-		index = indexSeed;
+		index = indexSeed;	
 		for (var i=index; i<(index+7); i++) {
 			var todaysDate = new Date();
 			futureDate = todaysDate.setDate(todaysDate.getDate() + i);
@@ -48,10 +69,8 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 
 	$scope.submitAppointmentEdit = function(outerIndex, innerIndex) {
 		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = false;
-		console.log($scope.dateArray[outerIndex].appointment[innerIndex])
+		// console.log($scope.dateArray[outerIndex].appointment[innerIndex])
 		localStorage.setItem('dateArrayJSON', JSON.stringify($scope.dateArray));
-		console.log()
-		console.log(localStorage.getItem('dateArrayJSON'))
 	}
 
 
