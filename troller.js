@@ -42,14 +42,11 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 
 	$scope.editAppointmentClick = function(outerIndex, innerIndex) {
 		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = true;
-				console.log(outerIndex);
-				console.log(innerIndex);
-				console.log($scope.dateArray[outerIndex].appointment[innerIndex].editKey)
 	}
 
-	$scope.finishAppointmentEdit = function(outerIndex, innerIndex) {
+	$scope.submitAppointmentEdit = function(outerIndex, innerIndex) {
 		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = false;
-		console.log($scope.dateArray[outerIndex].appointment[innerIndex].editKey)
+		console.log($scope.dateArray[outerIndex].appointment[innerIndex])
 	}
 
 }]);

@@ -22,15 +22,15 @@
 							<hr>
 							<div ng-click="editAppointmentClick(outerIndex, innerIndex)">
 							<label>What: </label><p ng-show="!appointment.editKey">{{appointment.whatKey}}</p>
-							<input ng-show="appointment.editKey" ng-bind="{{appointment.whatKey}}" value="{{appointment.whatKey}}"/>
+							<input ng-show="appointment.editKey" ng-model="appointment.whatKey" value="{{appointment.whatKey}}"/>
 						
 							<label>When: </label><p ng-show="!appointment.editKey">{{appointment.whenKey}}</p>
-							<input ng-show="appointment.editKey" ng-bind="appointment.whenKey" value="{{appointment.whenKey}}"/>
+							<input ng-show="appointment.editKey" ng-model="appointment.whenKey" value="{{appointment.whenKey}}"/>
 							
 							<label>Who: </label><p ng-show="!appointment.editKey">{{appointment.whoKey}}</p>
-							<input ng-show="appointment.editKey" ng-bind="appointment.whoKey" value="{{appointment.whoKey}}"/>
+							<input ng-show="appointment.editKey" ng-model="appointment.whoKey" value="{{appointment.whoKey}}"/>
 							</div>
-							<button ng-click="finishAppointmentEdit(outerIndex, innerIndex)" ng-show="appointment.editKey" class="button load-more-button">Submit Edits</button>
+							<button ng-click="submitAppointmentEdit(outerIndex, innerIndex)" ng-show="appointment.editKey" class="button load-more-button">Submit Edits</button>
 						</li>
 					</ul>					
 				</div>
