@@ -24,18 +24,20 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 	};
 
 	$scope.showForm = function(index) {
-
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 	}
 
-	$scope.submitAppointment = function(index, what, when, where) {
-		$scope.dateArray[index].appointment.push({
-			whatKey  : what,
-			whenKey  : when,
-			whereKey : where,
-		});
+	$scope.submitAppointment = function(index, what, when, who) {
+		if ((what != undefined || when != undefined || who != undefined) && (what != '' || when != '' || who != '')) {
+			$scope.dateArray[index].appointment.push({
+				whatKey  : what,
+				whenKey  : when,
+				whoKey   : who,
+			});
+		}
+
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
-		console.log($scope.dateArray)
+		// console.log($scope.dateArray)
 	}
 
 }]);

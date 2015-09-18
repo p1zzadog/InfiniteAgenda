@@ -13,18 +13,19 @@
 	<div class="agenda-container">
 		<ul ng-init="loadMore()">
 			<li ng-repeat="date in dateArray">
-				<div class="day-entry" ng-class-odd="'alternate-agenda'" ng-click="showForm($index)">{{date.date}}<br/>
+				<!-- setting scope variables to null here is the only way I could clear them. Doesn't work in JS file for some reason -->
+				<div ng-click="[showForm($index), what=null, when=null, who=null]" ng-class-odd="'alternate-agenda'" class="day-entry">{{date.date}}<br/>
 					<ul>
 								<!-- date.appointment === array containing appointment objects -->
 								<!-- appointment in date.appointment refers to appointment object -->
-						<li ng-repeat="appointment in date.appointment">What: {{appointment.whatKey}}<br/>When: {{appointment.whenKey}}<br/>Where: {{appointment.whereKey}}<br/></li>
+						<li ng-repeat="appointment in date.appointment">What: {{appointment.whatKey}}<br/>When: {{appointment.whenKey}}<br/>Who: {{appointment.whoKey}}<br/></li>
 					</ul>
 				</div>
 				<div ng-show="date.showValue">
 					<label>What?</label><input class="input" value="What?" ng-model="what"><br/>
 					<label>When?</label><input class="input" value="WHEN?" ng-model="when"><br/>
-					<label>With Who?</label><input class="input" value="WITH WHO?!" ng-model="where"><br/>
-					<button ng-click="submitAppointment($index, what, when, where)">Submit Appointment</button>
+					<label>With Who?</label><input class="input" value="WITH WHO?!" ng-model="who"><br/>
+					<button ng-click="submitAppointment($index, what, when, who)">Submit Appointment</button>
 				</div>
 			</li>
 		</ul>
