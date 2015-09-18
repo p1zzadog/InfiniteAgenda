@@ -28,11 +28,11 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 	}
 
-	$scope.submitAppointment = function(index, what, when, where) {
+	$scope.submitAppointment = function(index) {
 		$scope.dateArray[index].appointment.push({
-			whatKey  : what,
-			whenKey  : when,
-			whereKey : where,
+			whatKey  : $scope.what,
+			whenKey  : $scope.when,
+			whereKey : $scope.where,
 		});
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 		console.log($scope.dateArray)
