@@ -4,6 +4,18 @@ html {
 
 ul {
 	padding:0;
+	margin:0;
+}
+
+li {
+	list-style-type:none;
+}
+
+hr {
+	background-color:#F200AA;
+	height:5px;
+	padding:0;
+	margin:0;
 }
 
 .site-header {
@@ -11,11 +23,16 @@ ul {
 	background-color:black;
 	color:lawngreen;
 	font-size:2.5rem;
+	text-align:center;
+	margin: auto;
+/*	padding:0 10px 10px 10px;*/
 }
 
 .agenda-container {
 	width:320px;
 	text-align:center;
+	margin:auto;
+	/*padding:0 10px 10px 10px;*/
 }
 
 .day-entry {
@@ -27,11 +44,33 @@ ul {
 	width:320px;
 }
 
+.day-entry p {
+	margin:0;
+}
+
 .alternate-agenda {
 	background-color: lawngreen;
 	color:purple;
 }
 
-.button {
+.hidden-form{
+	background-color:#F200AA;
+	color:lawngreen;
+}
+
+.text-center {
 	text-align:center;
+}
+
+.button {
+	border:0;
+	height:2rem;
+	width:320px;
+	font-size:1rem;
+	background-color:black;
+	color:lawngreen;
+}
+
+.load-more-button {
+	background: linear-gradient(to bottom right, lawngreen , purple);;
 }

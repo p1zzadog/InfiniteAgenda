@@ -33,10 +33,23 @@ angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 				whatKey  : what,
 				whenKey  : when,
 				whoKey   : who,
+				editKey  : false,
 			});
 		}
 		$scope.dateArray[index].showValue = !$scope.dateArray[index].showValue;
 		// console.log($scope.dateArray)
+	}
+
+	$scope.editAppointmentClick = function(outerIndex, innerIndex) {
+		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = true;
+				console.log(outerIndex);
+				console.log(innerIndex);
+				console.log($scope.dateArray[outerIndex].appointment[innerIndex].editKey)
+	}
+
+	$scope.finishAppointmentEdit = function(outerIndex, innerIndex) {
+		$scope.dateArray[outerIndex].appointment[innerIndex].editKey = false;
+		console.log($scope.dateArray[outerIndex].appointment[innerIndex].editKey)
 	}
 
 }]);

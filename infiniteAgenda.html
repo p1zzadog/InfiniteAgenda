@@ -8,28 +8,43 @@
 	<link rel="stylesheet" type="text/css" href="main.css"/>
 	<script type="text/javascript" src="angular.js"></script>
 </head>
-<body ng-controller="troller">
+<body ng-controller="troller" ng-keypress = "keyPress($event)">
 	<Header class="site-header">Steve's Nefarious Agenda</Header>
 	<div class="agenda-container">
 		<ul ng-init="loadMore()">
-			<li ng-repeat="date in dateArray">
+			<li ng-repeat="(outerIndex, date) in dateArray">
 				<!-- setting scope variables to null here is the only way I could clear them. Doesn't work in JS file for some reason -->
-				<div ng-click="[showForm($index), what=null, when=null, who=null]" ng-class-odd="'alternate-agenda'" class="day-entry">{{date.date}}<br/>
+				<div ng-class-odd="'alternate-agenda'" class="day-entry">{{date.date}}<br/>
 					<ul>
 								<!-- date.appointment === array containing appointment objects -->
 								<!-- appointment in date.appointment refers to appointment object -->
-						<li ng-repeat="appointment in date.appointment">What: {{appointment.whatKey}}<br/>When: {{appointment.whenKey}}<br/>Who: {{appointment.whoKey}}<br/></li>
-					</ul>
+						<li ng-repeat="(innerIndex, appointment) in date.appointment">
+							<hr>
+							<div ng-click="editAppointmentClick(outerIndex, innerIndex)">
+							<label>What: </label><p ng-show="!appointment.editKey">{{appointment.whatKey}}</p>
+							<input ng-show="appointment.editKey" ng-bind="{{appointment.whatKey}}" value="{{appointment.whatKey}}"/>
+						
+							<label>When: </label><p ng-show="!appointment.editKey">{{appointment.whenKey}}</p>
+							<input ng-show="appointment.editKey" ng-bind="appointment.whenKey" value="{{appointment.whenKey}}"/>
+							
+							<label>Who: </label><p ng-show="!appointment.editKey">{{appointment.whoKey}}</p>
+							<input ng-show="appointment.editKey" ng-bind="appointment.whoKey" value="{{appointment.whoKey}}"/>
+							</div>
+							<button ng-click="finishAppointmentEdit(outerIndex, innerIndex)" ng-show="appointment.editKey" class="button load-more-button">Submit Edits</button>
+						</li>
+					</ul>					
 				</div>
-				<div ng-show="date.showValue">
+				<button ng-click="[showForm($index), what=null, when=null, who=null]" class="button">Add an Appointment</button>
+				<div ng-show="date.showValue" class="hidden-form">
 					<label>What?</label><input class="input" value="What?" ng-model="what"><br/>
 					<label>When?</label><input class="input" value="WHEN?" ng-model="when"><br/>
 					<label>With Who?</label><input class="input" value="WITH WHO?!" ng-model="who"><br/>
-					<button ng-click="submitAppointment($index, what, when, who)">Submit Appointment</button>
+					<button ng-click="submitAppointment($index, what, when, who)" class="button">Submit Appointment</button>
 				</div>
+				
 			</li>
 		</ul>
-		<button ng-click="loadMore()">Load More</button>
+		<button ng-click="loadMore()" class='button load-more-button'>Load More</button>
 	</div>
 	<script type="text/javascript" src="troller.js"></script>
 </body>
