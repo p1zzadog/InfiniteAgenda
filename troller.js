@@ -1,4 +1,4 @@
-angular.module('infiniteApp', []);
+angular.module('infiniteApp', ['infinite-scroll']);
 
 angular.module('infiniteApp').controller('troller', ['$scope', function($scope){
 	$scope.dateArray = [];

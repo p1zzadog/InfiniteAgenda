@@ -6,11 +6,14 @@
 	<title>JS Assignment 15: Infinite Agenda</title>
 	<link rel="stylesheet" type="text/css" href="normalize.css"/>
 	<link rel="stylesheet" type="text/css" href="main.css"/>
+	<script type="text/javascript" src="jquery-1.11.3.js"></script>
 	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="ng-infinite-scroll.js"></script>
+
 </head>
 <body ng-controller="troller" ng-keypress = "keyPress($event)">
 	<Header class="site-header">Steve's Nefarious Agenda</Header>
-	<div class="agenda-container">
+	<div class="agenda-container" infinite-scroll="loadMore()">
 		<ul ng-init="loadMore()">
 			<li ng-repeat="(outerIndex, date) in dateArray">
 				<!-- setting scope variables to null here is the only way I could clear them. Doesn't work in JS file for some reason -->
