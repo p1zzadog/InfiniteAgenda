@@ -27,6 +27,10 @@ ul {
 	width:320px;
 }
 
+.alternate-agenda {
+	background-color: purple;
+}
+
 .button {
 	text-align:center;
 }

@@ -9,15 +9,15 @@
 	<script type="text/javascript" src="angular.js"></script>
 </head>
 <body ng-controller="troller">
-	<Header class="site-header">Steve's Non-Nefarious Agenda</Header>
+	<Header class="site-header">Steve's Nefarious Agenda</Header>
 	<div class="agenda-container">
 		<ul ng-init="loadMore()">
 			<li ng-repeat="date in dateArray">
-				<div class="day-entry" ng-click="showForm($index)">{{date.date}}<br/>
+				<div class="day-entry" ng-class-odd="'alternate-agenda'" ng-click="showForm($index)">{{date.date}}<br/>
 					<ul>
 								<!-- date.appointment === array containing appointment objects -->
 								<!-- appointment in date.appointment refers to appointment object -->
-						<li ng-repeat="appointment in date.appointment">What: {{appointment.what}}<br/>When: {{appointment.when}}<br/>Where: {{appointment.where}}<br/></li>
+						<li ng-repeat="appointment in date.appointment">What: {{appointment.whatKey}}<br/>When: {{appointment.whenKey}}<br/>Where: {{appointment.whereKey}}<br/></li>
 					</ul>
 				</div>
 				<div ng-show="date.showValue">
